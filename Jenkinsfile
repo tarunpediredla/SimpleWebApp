@@ -29,6 +29,14 @@ pipeline {
                 }
             }
         }
+        stage('deploy') {
+            steps {
+                script {
+                    // test
+                    sh 'mvn deploy'
+                }
+            }
+        }
     }
 
     post {
