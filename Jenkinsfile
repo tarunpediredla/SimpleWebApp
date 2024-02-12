@@ -21,15 +21,11 @@ pipeline {
             }
         }
 
-        stage('Deploy to Tomcat') {
+        stage('test') {
             steps {
                 script {
-                    // Deploy the WAR file to Apache Tomcat using the Tomcat Manager API
-                    sh """
-                        curl -v -u ${tomcat}:${s3cret} \
-                        "${TOMCAT_SERVER}/manager/text/deploy?path=/your-web-app&update=true" \
-                        --upload-file target/your-web-app.war
-                    """
+                    // test
+                    sh 'mvn test'
                 }
             }
         }
